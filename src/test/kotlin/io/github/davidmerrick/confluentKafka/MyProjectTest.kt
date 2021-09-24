@@ -1,4 +1,4 @@
-package io.github.davidmerrick.myProject
+package io.github.davidmerrick.confluentKafka
 
 import io.kotlintest.shouldBe
 import org.testng.annotations.Test

@@ -1,1 +1,1 @@
-rootProject.name = "myProject"
+rootProject.name = "confluentKafka"

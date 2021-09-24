@@ -1,4 +1,4 @@
-package io.github.davidmerrick.confluentKafka.lesson3
+package io.github.davidmerrick.confluentKafka.streams.lesson3
 
 import io.confluent.developer.basic.TopicLoader
 import org.apache.kafka.common.serialization.Serdes

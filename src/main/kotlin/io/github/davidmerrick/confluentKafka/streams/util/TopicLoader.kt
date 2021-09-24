@@ -1,6 +1,6 @@
 package io.confluent.developer.basic
 
-import io.github.davidmerrick.confluentKafka.util.StreamsUtils
+import io.github.davidmerrick.confluentKafka.streams.util.StreamsUtils
 import org.apache.kafka.clients.admin.Admin
 import org.apache.kafka.clients.producer.Callback
 import org.apache.kafka.clients.producer.KafkaProducer

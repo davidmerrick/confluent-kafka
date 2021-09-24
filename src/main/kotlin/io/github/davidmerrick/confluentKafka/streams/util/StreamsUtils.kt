@@ -1,4 +1,4 @@
-package io.github.davidmerrick.confluentKafka.util
+package io.github.davidmerrick.confluentKafka.streams.util
 
 import org.apache.kafka.clients.admin.NewTopic
 import org.apache.kafka.clients.producer.Callback

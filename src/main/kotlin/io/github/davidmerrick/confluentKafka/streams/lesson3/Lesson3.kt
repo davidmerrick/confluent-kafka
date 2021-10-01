@@ -34,10 +34,12 @@ class Lesson3 {
             val firstStream = builder.stream(inputTopic, Consumed.with(Serdes.String(), Serdes.String()))
 
             firstStream.peek { key, value -> println("Incoming record - key $key value $value") }
+                // Filter only values which contain order number
                 .filter { _, value -> value.contains(orderNumberStart) }
                 .mapValues { value -> value.substring(value.indexOf("-") + 1) }
                 .filter { _, value -> value.toLong() > 1000 }
                 .peek { key, value -> println("Outgoing record - key $key value $value") }
+                // Streams always feed down to a sink, which is an output topic
                 .to(outputTopic, Produced.with(Serdes.String(), Serdes.String()))
 
             val kafkaStreams = KafkaStreams(builder.build(), streamsProps)

@@ -1,6 +1,5 @@
-package io.confluent.developer.basic
+package io.github.davidmerrick.confluentKafka.streams.util
 
-import io.github.davidmerrick.confluentKafka.streams.util.StreamsUtils
 import org.apache.kafka.clients.admin.Admin
 import org.apache.kafka.clients.producer.Callback
 import org.apache.kafka.clients.producer.KafkaProducer
@@ -9,8 +8,6 @@ import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.clients.producer.RecordMetadata
 import org.apache.kafka.common.serialization.StringSerializer
 import java.util.Properties
-import java.util.function.Consumer
-import java.util.stream.Collectors
 
 object TopicLoader {
     @JvmStatic
@@ -40,7 +37,7 @@ object TopicLoader {
                             )
                         }
                     }
-                val rawRecords = java.util.List.of(
+                val rawRecords = listOf(
                     "orderNumber-1001",
                     "orderNumber-5000",
                     "orderNumber-999",
@@ -49,20 +46,8 @@ object TopicLoader {
                     "bogus-2",
                     "orderNumber-8400"
                 )
-                val producerRecords: List<ProducerRecord<String?, String?>> =
-                    rawRecords.stream().map { r: String ->
-                        ProducerRecord(
-                            inputTopic,
-                            "order-key",
-                            r
-                        )
-                    }.collect(Collectors.toList())
-                producerRecords.forEach(Consumer { pr: ProducerRecord<String?, String?>? ->
-                    producer.send(
-                        pr,
-                        callback
-                    )
-                })
+                rawRecords.map { ProducerRecord(inputTopic, "order-key", it) }
+                    .forEach { producer.send(it, callback) }
             }
         }
     }

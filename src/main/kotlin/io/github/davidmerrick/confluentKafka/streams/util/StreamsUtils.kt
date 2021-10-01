@@ -13,7 +13,7 @@ private const val PROPERTIES_FILE_PATH = "src/main/resources/streams.properties"
 object StreamsUtils {
     fun loadProperties(): Properties {
         val properties = Properties()
-        FileInputStream("src/main/resources/streams.properties").use { fis ->
+        FileInputStream(PROPERTIES_FILE_PATH).use { fis ->
             properties.load(fis)
             return properties
         }
